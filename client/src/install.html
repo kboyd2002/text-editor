@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JATE - Installation</title>
+</head>
+
+<body>
+  <h1>JATE - Installation</h1>
+
+  <p>Welcome to the JATE installation page! Follow the steps below to install JATE on your device:</p>
+
+  <ol>
+    <li>Click the button below to start the installation process.</li>
+    <li>Follow the prompts to download and install JATE.</li>
+    <li>Once the installation is complete, you can launch JATE and start using it.</li>
+  </ol>
+
+  <button id="install-button">Install JATE</button>
+
+  <script>
+    document.getElementById('install-button').addEventListener('click', () => {
+      if (window.beforeinstallprompt) {
+        window.beforeinstallprompt.preventDefault();
+        window.beforeinstallprompt.prompt();
+        window.beforeinstallprompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the installation prompt.');
+          } else {
+            console.log('User dismissed the installation prompt.');
+          }
+        });
+      } else {
+        console.log('This browser does not support installation prompts.');
+      }
+    });
+  </script>
+</body>
+
+</html>
